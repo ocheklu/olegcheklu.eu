@@ -494,9 +494,10 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   .footer-sep{display:none}
   /* Vertical videos stay 9/16 on mobile */
   .video-box.vertical{aspect-ratio:9/16}
-  /* Hero portrait — reorder and show as small centered circle */
-  .hero-inner{display:flex;flex-direction:column}
-  .hero-kicker{order:1}
+  /* Hero — centered column layout */
+  .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero-kicker{order:1;justify-content:center}
+  .hero-kicker::before{display:none}
   .hero-ornament{
     display:block;
     position:relative;right:auto;top:auto;transform:none;
@@ -506,7 +507,8 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   }
   .hero-name{order:3}
   .hero-subtitle{order:4}
-  .stats-row{order:5}
+  .stats-row{order:5;justify-content:center}
+  .stat-l{max-width:none}
 }
 </style>
 </head>
