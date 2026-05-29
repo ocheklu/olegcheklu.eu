@@ -740,9 +740,17 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
           allowfullscreen></iframe>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:1rem">
-        <div class="photo-placeholder aspect-43"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
-        <div class="photo-placeholder aspect-43"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
+      <div class="photo-slider">
+        <div class="slider-track" id="slider-online">
+          <div class="slider-slide" style="aspect-ratio:9/16"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
+          <div class="slider-slide" style="aspect-ratio:9/16"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
+        </div>
+        <button class="slider-btn prev" data-target="slider-online">&#8592;</button>
+        <button class="slider-btn next" data-target="slider-online">&#8594;</button>
+        <div class="slider-dots" id="dots-slider-online">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+        </div>
       </div>
 
     </div>
