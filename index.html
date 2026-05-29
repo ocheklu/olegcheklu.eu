@@ -343,7 +343,7 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
     <li><a href="#ceremony">Церемония</a></li>
     <li><a href="#bridges">Знакомство</a></li>
     <li><a href="#mafia">Игра Мафия</a></li>
-    <li><a href="#multimedia">Интерактив</a></li>
+    <li><a href="#multimedia">Викторины</a></li>
     <li><a href="#online">Онлайн Игра</a></li>
     <li><a href="#wellness">Wellness</a></li>
     <li><a href="#extra">Уникальные услуги</a></li>
@@ -480,27 +480,20 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
       <h2 class="s-title">Мафия по авторской методике</h2>
     </div>
 
-    <div class="fade layout-two-col" style="margin-bottom:1.5rem;align-items:start">
-      <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/7bh7vf85MR4"
-          title="Мафия — горизонтальное видео" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-      <div class="video-box vertical">
-        <iframe src="https://www.youtube.com/embed/evPBwhpsrY4"
-          title="Мафия — вертикальное видео" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
+    <!-- Главное горизонтальное видео -->
+    <div class="fade video-box" style="margin-bottom:1.5rem">
+      <iframe src="https://www.youtube.com/embed/7bh7vf85MR4"
+        title="Мафия — горизонтальное видео" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
 
+    <!-- Карусель фото -->
     <div class="fade photo-slider" style="margin-bottom:2.5rem">
       <div class="slider-track" id="slider-mafia">
         <div class="slider-slide"><img src="img/mafia-1.webp" alt="Мафия 1"></div>
         <div class="slider-slide"><img src="img/mafia-2.webp" alt="Мафия 2"></div>
         <div class="slider-slide"><img src="img/mafia-3.webp" alt="Мафия 3"></div>
-        <div class="slider-slide"><img src="img/mafia-4.webp" alt="Мафия 4"></div>
         <div class="slider-slide"><img src="img/mafia-5.webp" alt="Мафия 5"></div>
       </div>
       <button class="slider-btn prev" data-target="slider-mafia">&#8592;</button>
@@ -510,29 +503,36 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
         <div class="slider-dot"></div>
         <div class="slider-dot"></div>
         <div class="slider-dot"></div>
-        <div class="slider-dot"></div>
       </div>
     </div>
 
-    <div class="fade">
-      <p class="s-desc">
-        Основываясь на практиках, улучшающих самочувствие человека, и опираясь на многолетний опыт в организации мероприятий, я создал уникальный формат, направленный на самопознание, развитие эмоционального интеллекта и объединение гостей.
-      </p>
-      <p class="s-desc">
-        10 игроков. Каждый гость приглашается к круглому столу индивидуально — под сопровождение презентации с заранее подготовленными фактами и музыкой. Таблички с именами помогают гостям лучше ориентироваться и входить в личный контакт.
-      </p>
-      <p class="s-desc">
-        Ведущий постепенно знакомит группу с правилами и способами, помогающими опираться на собственные чувства. В один вечер может состояться 3 сессии: если гостей 30 — каждый сыграет по разу; если 10 — каждый примет участие трижды. После всех сессий — вручение номинаций.
-      </p>
-
-      <div class="s-meta">
-        <div class="s-meta-item">
-          <p class="s-meta-label">Длительность</p>
-          <p class="s-meta-value">3–3,5 часа</p>
-        </div>
-        <div class="s-meta-item">
-          <p class="s-meta-label">Стоимость</p>
-          <p class="s-meta-value">600 €</p>
+    <!-- Вертикальное видео (Short) слева + описание справа -->
+    <div class="fade mafia-bottom-row">
+      <div class="video-box vertical">
+        <iframe src="https://www.youtube.com/embed/evPBwhpsrY4"
+          title="Мафия — вертикальное видео" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div>
+        <p class="s-desc">
+          Основываясь на практиках, улучшающих самочувствие человека, и опираясь на многолетний опыт в организации мероприятий, я создал уникальный формат, направленный на самопознание, развитие эмоционального интеллекта и объединение гостей.
+        </p>
+        <p class="s-desc">
+          10 игроков. Каждый гость приглашается к круглому столу индивидуально — под сопровождение презентации с заранее подготовленными фактами и музыкой. Таблички с именами помогают гостям лучше ориентироваться и входить в личный контакт.
+        </p>
+        <p class="s-desc">
+          Ведущий постепенно знакомит группу с правилами и способами, помогающими опираться на собственные чувства. В один вечер может состояться 3 сессии: если гостей 30 — каждый сыграет по разу; если 10 — каждый примет участие трижды. После всех сессий — вручение номинаций.
+        </p>
+        <div class="s-meta">
+          <div class="s-meta-item">
+            <p class="s-meta-label">Длительность</p>
+            <p class="s-meta-value">3–3,5 часа</p>
+          </div>
+          <div class="s-meta-item">
+            <p class="s-meta-label">Стоимость</p>
+            <p class="s-meta-value">600 €</p>
+          </div>
         </div>
       </div>
     </div>
@@ -547,7 +547,7 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   <div class="wrap">
 
     <div class="fade">
-      <p class="s-tag">Интерактив</p>
+      <p class="s-tag">Викторины</p>
       <h2 class="s-title">Мультимедийная программа</h2>
       <p class="s-desc">
         Используя ТВ-экран и телефоны гостей для голосования, создаётся атмосфера «трибун болельщиков» — умеренно, но азартно. В программе могут быть викторины в формате «Кто хочет стать миллионером?» с вопросами о самих гостях; «Угадай мелодию» по набору фото; тематические псевдоинтеллектуальные конкурсы.
@@ -617,11 +617,9 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
           allowfullscreen></iframe>
       </div>
 
-      <div class="photo-strip-wrap">
-        <div class="photo-strip">
-          <div class="photo-strip-item"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
-          <div class="photo-strip-item"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="photo-placeholder aspect-43"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
+        <div class="photo-placeholder aspect-43"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
       </div>
 
     </div>
@@ -758,7 +756,7 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
     <p class="footer-name">Олег Чеклу</p>
     <p class="footer-sub">[Телефон] · [Email] · [Telegram @...]</p>
     <button class="footer-links-btn" onclick="document.getElementById('links-modal').classList.add('open')">
-      Все проекты &nbsp;↗
+      Больше проектов &nbsp;↗
     </button>
   </div>
 </footer>
