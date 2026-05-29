@@ -29,7 +29,7 @@ body{
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:1.4rem 5rem;
-  display:flex;justify-content:flex-end;align-items:center;
+  display:flex;justify-content:center;align-items:center;
   transition:background .35s,padding .3s;
 }
 nav.scrolled{
@@ -83,8 +83,11 @@ nav ul a:hover{color:var(--text)}
 .stat-l{font-size:.78rem;color:var(--muted);line-height:1.4;max-width:130px}
 .hero-ornament{
   position:absolute;right:5rem;top:50%;transform:translateY(-50%);
-  opacity:.09;pointer-events:none;
+  width:300px;height:300px;border-radius:50%;overflow:hidden;
+  border:1px solid var(--accent-border);
 }
+.hero-ornament img{width:100%;height:100%;object-fit:cover;display:block}
+.mafia-bottom-row{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:start}
 
 /* ── WRAP ── */
 .wrap{max-width:1140px;margin:0 auto;padding:0 5rem}
@@ -312,6 +315,7 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   .hero-inner{padding:8rem 1.8rem 5rem}
   .hero-name,.hero-subtitle{white-space:normal}
   .hero-ornament{display:none}
+  .mafia-bottom-row{grid-template-columns:1fr}
   .s-number{display:none}
   .layout-two-col{grid-template-columns:1fr}
   .layout-three-col{grid-template-columns:1fr 1fr}
@@ -350,24 +354,11 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
 <!-- ═══ HERO ═══ -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-ornament" aria-hidden="true">
-      <svg width="280" height="380" viewBox="0 0 280 380" fill="none">
-        <path d="M140 20C140 20 80 70 80 140c0 70 40 100 60 100s60-30 60-100C200 70 140 20 140 20z" stroke="#a84f28" stroke-width="1" fill="none"/>
-        <path d="M140 240c0 0-40 30-50 80-5 25 10 45 50 48 40-3 55-23 50-48-10-50-50-80-50-80z" stroke="#a84f28" stroke-width="1" fill="none"/>
-        <circle cx="140" cy="140" r="18" stroke="#a84f28" stroke-width="1" fill="none"/>
-        <circle cx="140" cy="300" r="12" stroke="#a84f28" stroke-width="1" fill="none"/>
-        <path d="M80 140C50 100 30 90 20 110" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <path d="M200 140C230 100 250 90 260 110" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <ellipse cx="22" cy="94" rx="14" ry="10" transform="rotate(-30 22 94)" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <ellipse cx="258" cy="94" rx="14" ry="10" transform="rotate(30 258 94)" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <path d="M105 90C90 60 95 40 110 35" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <path d="M175 90C190 60 185 40 170 35" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <ellipse cx="104" cy="28" rx="14" ry="10" transform="rotate(-20 104 28)" stroke="#a84f28" stroke-width=".8" fill="none"/>
-        <ellipse cx="176" cy="28" rx="14" ry="10" transform="rotate(20 176 28)" stroke="#a84f28" stroke-width=".8" fill="none"/>
-      </svg>
+    <div class="hero-ornament">
+      <img src="img/host.webp" alt="Олег Чеклу">
     </div>
 
-    <p class="hero-kicker">Ведущий · Европа</p>
+    <p class="hero-kicker">Ведущий мероприятий, мастер церемоний, креативный продюссер · Европа</p>
     <h1 class="hero-name">Олег Чеклу</h1>
     <p class="hero-subtitle">Создаю живое пространство, где люди раскрываются.</p>
 
