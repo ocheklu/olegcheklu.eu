@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Олег Чеклу — Ведущий</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:            #f7f3ee;
+  --bg-alt:        #efe9e1;
+  --text:          #1c1917;
+  --muted:         #8c8078;
+  --accent:        #a84f28;
+  --accent-dim:    rgba(168,79,40,0.07);
+  --accent-border: rgba(168,79,40,0.22);
+  --line:          rgba(28,25,23,0.1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Jost',sans-serif;font-weight:300;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 5rem;
+  display:flex;justify-content:flex-end;align-items:center;
+  transition:background .35s,padding .3s;
+}
+nav.scrolled{
+  background:rgba(247,243,238,.97);
+  padding:1rem 5rem;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(6px);
+}
+nav ul{list-style:none;display:flex;gap:2.5rem;flex-wrap:wrap}
+nav ul a{
+  color:var(--muted);text-decoration:none;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  transition:color .2s;white-space:nowrap;
+}
+nav ul a:hover{color:var(--text)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1140px;margin:0 auto;padding:10rem 5rem 7rem;
+  width:100%;position:relative;
+}
+.hero-kicker{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-kicker::before{content:'';width:2rem;height:1px;background:var(--accent);opacity:.55}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.8rem,9vw,7.5rem);
+  font-weight:300;line-height:.95;color:var(--text);margin-bottom:2rem;
+  white-space:nowrap;
+}
+.hero-subtitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-style:italic;
+  color:var(--muted);margin-bottom:5rem;
+  white-space:nowrap;
+}
+.stats-row{display:flex;gap:5rem;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:.4rem}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.4rem;font-weight:300;color:var(--accent);line-height:1;
+}
+.stat-l{font-size:.78rem;color:var(--muted);line-height:1.4;max-width:130px}
+.hero-ornament{
+  position:absolute;right:5rem;top:50%;transform:translateY(-50%);
+  opacity:.09;pointer-events:none;
+}
+
+/* ── WRAP ── */
+.wrap{max-width:1140px;margin:0 auto;padding:0 5rem}
+
+/* ── SERVICE SECTIONS ── */
+.service-section{
+  padding:8rem 0;border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.service-section:nth-child(even){background:var(--bg-alt)}
+
+.s-number{
+  position:absolute;right:2vw;top:50%;transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(9rem,20vw,18rem);
+  font-weight:300;line-height:1;color:var(--accent);opacity:.07;
+  pointer-events:none;user-select:none;letter-spacing:-.02em;
+}
+.s-tag{
+  font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.8rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.s-tag::before{content:'';display:inline-block;width:1.6rem;height:1px;background:var(--accent);opacity:.6}
+.s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:300;line-height:1.1;margin-bottom:1.8rem;max-width:640px;color:var(--text);
+}
+.s-desc{
+  color:var(--muted);max-width:620px;line-height:1.85;margin-bottom:1.6rem;font-size:.95rem;
+}
+
+/* subtle inline note — without box */
+.s-inline-note{
+  color:var(--muted);max-width:580px;font-size:.86rem;
+  line-height:1.75;margin-bottom:2rem;font-style:italic;
+}
+.s-inline-note::before{
+  content:'↳ ';color:var(--accent);font-style:normal;opacity:.7;
+}
+
+/* "Подходит" list */
+.s-for-list{
+  max-width:580px;margin-bottom:2rem;
+}
+.s-for-label{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.9rem;display:block;
+}
+.s-for-list ul{list-style:none}
+.s-for-list li{
+  font-size:.9rem;color:var(--muted);
+  padding:.45rem 0 .45rem 1.2rem;
+  position:relative;line-height:1.6;
+}
+.s-for-list li::before{
+  content:'–';position:absolute;left:0;color:var(--accent);opacity:.5;
+}
+
+/* meta row */
+.s-meta{
+  display:flex;gap:3rem;flex-wrap:wrap;
+  margin-top:2.2rem;padding-top:2rem;
+  border-top:1px solid var(--line);max-width:760px;
+}
+.s-meta-label{
+  font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.3rem;
+}
+.s-meta-value{font-size:.9rem;color:var(--text);font-weight:400;line-height:1.5}
+
+/* ── MEDIA ── */
+.video-box{
+  position:relative;aspect-ratio:16/9;
+  background:#e2dbd2;border:1px solid var(--line);overflow:hidden;
+}
+.video-box.vertical{aspect-ratio:9/16}
+.video-box video,.video-box iframe{width:100%;height:100%;display:block;border:0}
+
+.photo-placeholder{
+  background:#ebe4da;border:1px dashed var(--accent-border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  overflow:hidden;
+}
+.photo-placeholder img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* layouts */
+.layout-two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.layout-three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start}
+.layout-photo-col{display:grid;grid-template-rows:1fr 1fr;gap:1.5rem}
+.layout-2x2{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1.2rem}
+.layout-photo-col-3{display:grid;grid-template-rows:1fr 1fr 1fr;gap:1.2rem}
+
+.aspect-43{aspect-ratio:4/3}
+.aspect-32{aspect-ratio:3/2}
+.aspect-169{aspect-ratio:16/9}
+.aspect-916{aspect-ratio:9/16}
+
+/* ── PHOTO SLIDER (button-based) ── */
+.photo-slider{position:relative}
+.slider-track{
+  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.slider-track::-webkit-scrollbar{display:none}
+.slider-slide{
+  flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;
+  background:#ebe4da;border:1px dashed var(--accent-border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;overflow:hidden;
+}
+.slider-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slider-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(247,243,238,.88);border:1px solid var(--line);
+  color:var(--text);width:2.4rem;height:2.4rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.95rem;z-index:2;transition:background .2s;
+}
+.slider-btn:hover{background:#fff}
+.slider-btn.prev{left:.8rem}
+.slider-btn.next{right:.8rem}
+.slider-dots{display:flex;justify-content:center;gap:.5rem;margin-top:.8rem}
+.slider-dot{
+  width:.38rem;height:.38rem;border-radius:50%;
+  background:var(--muted);opacity:.3;cursor:pointer;transition:opacity .2s;
+}
+.slider-dot.active{opacity:1;background:var(--accent)}
+
+/* ── PHOTO STRIP (scroll-only, shows edges) ── */
+.photo-strip-wrap{overflow:hidden}
+.photo-strip{
+  display:flex;gap:1rem;overflow-x:auto;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;padding-bottom:.5rem;
+}
+.photo-strip::-webkit-scrollbar{display:none}
+.photo-strip-item{
+  flex:0 0 calc(60% - .5rem);scroll-snap-align:start;
+  aspect-ratio:4/3;
+  background:#ebe4da;border:1px dashed var(--accent-border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;overflow:hidden;
+}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Online layout: vertical video + strip */
+.online-layout{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:center}
+
+/* ── UNIQUE SERVICES ── */
+.unique-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:3.5rem}
+.unique-card{
+  padding:2.8rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  transition:background .2s;
+}
+.unique-card:nth-child(even){border-right:0}
+.unique-card:nth-last-child(-n+2){border-bottom:0}
+.unique-card:hover{background:var(--accent-dim)}
+.unique-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;margin-bottom:.8rem;color:var(--text)}
+.unique-desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.unique-price{font-size:.78rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);background:var(--bg)}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--accent);margin-bottom:.5rem}
+.footer-sub{font-size:.8rem;color:var(--muted);letter-spacing:.1em;margin-bottom:1.5rem}
+.footer-links-btn{
+  background:none;border:1px solid var(--accent-border);
+  color:var(--muted);font-family:'Jost',sans-serif;font-weight:300;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.55rem 1.4rem;cursor:pointer;transition:all .2s;
+}
+.footer-links-btn:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── MODAL ── */
+.modal-backdrop{
+  display:none;position:fixed;inset:0;
+  background:rgba(28,25,23,.45);z-index:200;
+  align-items:center;justify-content:center;
+  backdrop-filter:blur(5px);
+}
+.modal-backdrop.open{display:flex;animation:mFadeIn .22s ease}
+.modal-card{
+  background:var(--bg);padding:2.8rem 3.2rem;
+  max-width:460px;width:90%;border:1px solid var(--line);
+  position:relative;animation:mScaleIn .22s ease;
+}
+.modal-close{
+  position:absolute;top:1rem;right:1.2rem;
+  background:none;border:none;color:var(--muted);
+  font-size:1rem;cursor:pointer;padding:.4rem;transition:color .2s;
+}
+.modal-close:hover{color:var(--text)}
+.modal-group{margin-bottom:1.8rem}
+.modal-group:last-child{margin-bottom:0}
+.modal-group-label{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.7rem;display:block;
+}
+.modal-link{
+  display:flex;justify-content:space-between;align-items:baseline;
+  color:var(--text);text-decoration:none;font-size:.9rem;
+  padding:.45rem 0;border-bottom:1px solid var(--line);
+  transition:color .2s;gap:1rem;
+}
+.modal-link:last-child{border-bottom:0}
+.modal-link:hover{color:var(--accent)}
+.modal-link span{color:var(--muted);font-size:.78rem;white-space:nowrap}
+@keyframes mFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes mScaleIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+
+/* ── FADE IN ── */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fade.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  nav ul{gap:1.2rem}
+  nav ul a{font-size:.62rem;letter-spacing:.08em}
+  nav.scrolled{padding:.8rem 1.5rem}
+  .wrap{padding:0 1.8rem}
+  .hero-inner{padding:8rem 1.8rem 5rem}
+  .hero-name,.hero-subtitle{white-space:normal}
+  .hero-ornament{display:none}
+  .s-number{display:none}
+  .layout-two-col{grid-template-columns:1fr}
+  .layout-three-col{grid-template-columns:1fr 1fr}
+  .online-layout{grid-template-columns:1fr}
+  .video-box.vertical{aspect-ratio:16/9}
+  .unique-grid{grid-template-columns:1fr}
+  .unique-card{border-right:0;border-bottom:1px solid var(--line)!important}
+  .unique-card:last-child{border-bottom:0!important}
+  .service-section{padding:5rem 0}
+  .stats-row{gap:2.5rem}
+  .s-meta{gap:2rem}
+  .photo-strip-item{flex:0 0 78%}
+}
+@media(max-width:600px){
+  .layout-three-col{grid-template-columns:1fr}
+  nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <ul>
+    <li><a href="#ceremony">Церемония</a></li>
+    <li><a href="#bridges">Знакомство</a></li>
+    <li><a href="#mafia">Игра Мафия</a></li>
+    <li><a href="#multimedia">Интерактив</a></li>
+    <li><a href="#online">Онлайн Игра</a></li>
+    <li><a href="#wellness">Wellness</a></li>
+    <li><a href="#extra">Уникальные услуги</a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <svg width="280" height="380" viewBox="0 0 280 380" fill="none">
+        <path d="M140 20C140 20 80 70 80 140c0 70 40 100 60 100s60-30 60-100C200 70 140 20 140 20z" stroke="#a84f28" stroke-width="1" fill="none"/>
+        <path d="M140 240c0 0-40 30-50 80-5 25 10 45 50 48 40-3 55-23 50-48-10-50-50-80-50-80z" stroke="#a84f28" stroke-width="1" fill="none"/>
+        <circle cx="140" cy="140" r="18" stroke="#a84f28" stroke-width="1" fill="none"/>
+        <circle cx="140" cy="300" r="12" stroke="#a84f28" stroke-width="1" fill="none"/>
+        <path d="M80 140C50 100 30 90 20 110" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <path d="M200 140C230 100 250 90 260 110" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <ellipse cx="22" cy="94" rx="14" ry="10" transform="rotate(-30 22 94)" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <ellipse cx="258" cy="94" rx="14" ry="10" transform="rotate(30 258 94)" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <path d="M105 90C90 60 95 40 110 35" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <path d="M175 90C190 60 185 40 170 35" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <ellipse cx="104" cy="28" rx="14" ry="10" transform="rotate(-20 104 28)" stroke="#a84f28" stroke-width=".8" fill="none"/>
+        <ellipse cx="176" cy="28" rx="14" ry="10" transform="rotate(20 176 28)" stroke="#a84f28" stroke-width=".8" fill="none"/>
+      </svg>
+    </div>
+
+    <p class="hero-kicker">Ведущий · Европа</p>
+    <h1 class="hero-name">Олег Чеклу</h1>
+    <p class="hero-subtitle">Создаю живое пространство, где люди раскрываются.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-n">17</span>
+        <span class="stat-l">лет работы с живыми мероприятиями</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">15</span>
+        <span class="stat-l">лет терапевтической практики</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">11</span>
+        <span class="stat-l">лет продюсирования авторских проектов</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 01 CEREMONY ═══ -->
+<section class="service-section" id="ceremony">
+  <span class="s-number" aria-hidden="true">01</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Церемония</p>
+      <h2 class="s-title">История отношений</h2>
+    </div>
+
+    <div class="fade video-box" style="margin-bottom:1.5rem">
+      <video controls preload="none" poster="">
+        <source src="ceremony.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="fade photo-slider" style="margin-bottom:2.5rem">
+      <div class="slider-track" id="slider-ceremony">
+        <div class="slider-slide">← Фото 1</div>
+        <div class="slider-slide">← Фото 2</div>
+        <div class="slider-slide">← Фото 3</div>
+      </div>
+      <button class="slider-btn prev" data-target="slider-ceremony">&#8592;</button>
+      <button class="slider-btn next" data-target="slider-ceremony">&#8594;</button>
+      <div class="slider-dots" id="dots-slider-ceremony">
+        <div class="slider-dot active"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+      </div>
+    </div>
+
+    <div class="fade">
+      <p class="s-desc">
+        Хронологический рассказ о том, как развивались отношения двух людей. Основан на интервью с парой, которое я провожу в режиме онлайн или во время живой встречи.
+      </p>
+      <p class="s-desc">
+        Романтическая история с элементами юмора, которую я рассказываю под органичную музыку, помогает усилить эмоциональную связь между всеми присутствующими на церемонии.
+      </p>
+      <p class="s-inline-note">
+        Идеально под открытым небом. Подходит молодожёнам или паре, которая хочет отметить важное событие — годовщину, рождение ребёнка или другой особый момент.
+      </p>
+
+      <div class="s-meta">
+        <div class="s-meta-item">
+          <p class="s-meta-label">Длительность</p>
+          <p class="s-meta-value">Интервью — 1–2 часа<br>Церемония — 5–15 минут</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Стоимость</p>
+          <p class="s-meta-value">500 €</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ 02 BRIDGES ═══ -->
+<section class="service-section" id="bridges">
+  <span class="s-number" aria-hidden="true">02</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Знакомство группы</p>
+      <h2 class="s-title">Тактичный интерактив и номинации дня</h2>
+      <p class="s-desc">
+        Импровизационный блок программы в формате живого общения с гостями — на основе характеристик и профессий каждого участника, а также актуальных событий, произошедших внутри группы накануне.
+      </p>
+      <p class="s-desc">
+        Непринуждённо, порой интерактивно — рассказывая о гостях и вручая им юмористические номинации в знак уважения — отношения в группе становятся проще и ближе. Информация друг о друге, подкреплённая эмоциями, становится «мостом» и помогает развиваться взаимоотношениям вне развлекательной программы.
+      </p>
+    </div>
+
+    <div class="fade layout-2x2" style="margin-top:2rem">
+      <div class="photo-placeholder aspect-43">← Фото 1</div>
+      <div class="photo-placeholder aspect-43">← Фото 2</div>
+      <div class="photo-placeholder aspect-43">← Фото 3</div>
+      <div class="photo-placeholder aspect-43">← Фото 4</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ 03 MAFIA ═══ -->
+<section class="service-section" id="mafia">
+  <span class="s-number" aria-hidden="true">03</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Игра Мафия</p>
+      <h2 class="s-title">Мафия по авторской методике</h2>
+    </div>
+
+    <div class="fade layout-two-col" style="margin-bottom:1.5rem">
+      <div class="video-box">
+        <video controls preload="none" poster="">
+          <source src="mafia-1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-box">
+        <video controls preload="none" poster="">
+          <source src="mafia-2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="fade photo-slider" style="margin-bottom:2.5rem">
+      <div class="slider-track" id="slider-mafia">
+        <div class="slider-slide">← Фото 1</div>
+        <div class="slider-slide">← Фото 2</div>
+        <div class="slider-slide">← Фото 3</div>
+        <div class="slider-slide">← Фото 4</div>
+      </div>
+      <button class="slider-btn prev" data-target="slider-mafia">&#8592;</button>
+      <button class="slider-btn next" data-target="slider-mafia">&#8594;</button>
+      <div class="slider-dots" id="dots-slider-mafia">
+        <div class="slider-dot active"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+      </div>
+    </div>
+
+    <div class="fade">
+      <p class="s-desc">
+        Основываясь на практиках, улучшающих самочувствие человека, и опираясь на многолетний опыт в организации мероприятий, я создал уникальный формат, направленный на самопознание, развитие эмоционального интеллекта и объединение гостей.
+      </p>
+      <p class="s-desc">
+        10 игроков. Каждый гость приглашается к круглому столу индивидуально — под сопровождение презентации с заранее подготовленными фактами и музыкой. Таблички с именами помогают гостям лучше ориентироваться и входить в личный контакт.
+      </p>
+      <p class="s-desc">
+        Ведущий постепенно знакомит группу с правилами и способами, помогающими опираться на собственные чувства. В один вечер может состояться 3 сессии: если гостей 30 — каждый сыграет по разу; если 10 — каждый примет участие трижды. После всех сессий — вручение номинаций.
+      </p>
+
+      <div class="s-meta">
+        <div class="s-meta-item">
+          <p class="s-meta-label">Длительность</p>
+          <p class="s-meta-value">3–3,5 часа</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Стоимость</p>
+          <p class="s-meta-value">600 €</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ 04 INTERACTIVE ═══ -->
+<section class="service-section" id="multimedia">
+  <span class="s-number" aria-hidden="true">04</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Интерактив</p>
+      <h2 class="s-title">Мультимедийная программа</h2>
+      <p class="s-desc">
+        Используя ТВ-экран и телефоны гостей для голосования, создаётся атмосфера «трибун болельщиков» — умеренно, но азартно. В программе могут быть викторины в формате «Кто хочет стать миллионером?» с вопросами о самих гостях; «Угадай мелодию» по набору фото; тематические псевдоинтеллектуальные конкурсы.
+      </p>
+      <p class="s-desc">
+        Программа проходит динамично, эмоционально воодушевляет и расслабляет гостей. Мультимедийный блок помогает создать игривую атмосферу.
+      </p>
+    </div>
+
+    <div class="fade photo-slider" style="margin-top:2rem;margin-bottom:2.5rem">
+      <div class="slider-track" id="slider-multimedia">
+        <div class="slider-slide">← Фото 1</div>
+        <div class="slider-slide">← Фото 2</div>
+        <div class="slider-slide">← Фото 3</div>
+        <div class="slider-slide">← Фото 4</div>
+        <div class="slider-slide">← Фото 5</div>
+      </div>
+      <button class="slider-btn prev" data-target="slider-multimedia">&#8592;</button>
+      <button class="slider-btn next" data-target="slider-multimedia">&#8594;</button>
+      <div class="slider-dots" id="dots-slider-multimedia">
+        <div class="slider-dot active"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+      </div>
+    </div>
+
+    <div class="fade">
+      <div class="s-meta">
+        <div class="s-meta-item">
+          <p class="s-meta-label">Длительность блока</p>
+          <p class="s-meta-value">20–40 минут</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Стоимость</p>
+          <p class="s-meta-value">300 €</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Технические требования</p>
+          <p class="s-meta-value">ТВ-экран не менее 65 дюймов</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ 05 ONLINE ═══ -->
+<section class="service-section" id="online">
+  <span class="s-number" aria-hidden="true">05</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Онлайн Игра</p>
+      <h2 class="s-title">Мафия в онлайн формате</h2>
+      <p class="s-desc">
+        Мой новый проект, представленный на самом масштабном фестивале игр среди стран Балтии «Comic Con 2026». Это первая в мире платформа для игры в Мафию с видеосвязью, голосом и игровыми функциями персонажей.
+      </p>
+      <p class="s-desc">
+        Формат может стать сюрпризом для любителей игр или IT-специалистов. Подходит для онлайн-встречи друзей или онлайн-корпоратива.
+      </p>
+    </div>
+
+    <!-- Вертикальное видео + прокручиваемая лента фото -->
+    <div class="fade online-layout" style="margin-top:2rem">
+
+      <div class="video-box vertical">
+        <video controls preload="none" poster="">
+          <source src="mafia-online.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="photo-strip-wrap">
+        <div class="photo-strip">
+          <div class="photo-strip-item">← Фото 1</div>
+          <div class="photo-strip-item">← Фото 2</div>
+          <div class="photo-strip-item">← Фото 3</div>
+          <div class="photo-strip-item">← Фото 4</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade">
+      <div class="s-meta">
+        <div class="s-meta-item">
+          <p class="s-meta-label">Длительность сессии</p>
+          <p class="s-meta-value">20–35 минут</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Стоимость</p>
+          <p class="s-meta-value">100 €</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ 06 WELLNESS ═══ -->
+<section class="service-section" id="wellness">
+  <span class="s-number" aria-hidden="true">06</span>
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Wellness</p>
+      <h2 class="s-title">Практика самопознания через движение</h2>
+      <p class="s-desc">
+        В возрасте 5 лет я начал исследовать, что чувствую. Первые 15 лет интуитивно учился понимать свои эмоции и духовные переживания. Вторую половину жизни практически познавал различные терапевтические формы: личную и групповую психотерапию, лагеря психодрамы, встречи со специалистами помогающих профессий, арт-терапию, медитацию и танцевальную терапию.
+      </p>
+      <p class="s-desc">
+        Простейшие ответы и настоящие результаты — изменения в здоровье и качестве повседневной жизни — начали происходить, когда к исследованию психики добавилась работа с телом. Ясность укрепляла работа с энергией — медитации. Объединив всё накопленное за 30 лет, я начал помогать другим, выбирая форматы, где важны не только знания, но и живое ощущение.
+      </p>
+      <p class="s-desc">
+        Практика исследования себя через физическое движение, интуитивный танец и проигранные жизненные ситуации. На занятиях мы учимся распознавать свои эмоции, потребности тела и подлинные качества.
+      </p>
+
+      <div class="s-for-list">
+        <span class="s-for-label">Подходит</span>
+        <ul>
+          <li>Тем, кто хочет замедлить ум и отпустить напряжение из тела</li>
+          <li>Тем, кто хочет познакомиться со своими подлинными качествами</li>
+          <li>Тем, кто хочет укрепить связь с телом и повысить уверенность в себе</li>
+          <li>Группам друзей или рабочим коллективам, желающим укрепить связь между собой</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Два вертикальных видео + одно вертикальное фото -->
+    <div class="fade layout-three-col" style="margin-top:2rem;margin-bottom:2.5rem">
+      <div class="video-box vertical">
+        <video controls preload="none" poster="">
+          <source src="wellness-1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-box vertical">
+        <video controls preload="none" poster="">
+          <source src="wellness-2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="photo-placeholder aspect-916">← Фото</div>
+    </div>
+
+    <div class="fade">
+      <div class="s-meta">
+        <div class="s-meta-item">
+          <p class="s-meta-label">Длительность</p>
+          <p class="s-meta-value">1,5 часа</p>
+        </div>
+        <div class="s-meta-item">
+          <p class="s-meta-label">Стоимость</p>
+          <p class="s-meta-value">25 € с участника</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ УНИКАЛЬНЫЕ УСЛУГИ ═══ -->
+<section class="service-section" id="extra">
+  <div class="wrap">
+
+    <div class="fade">
+      <p class="s-tag">Дополнительно</p>
+      <h2 class="s-title">Уникальные услуги</h2>
+    </div>
+
+    <div class="unique-grid fade">
+      <div class="unique-card">
+        <h3 class="unique-title">Сценарий для свидания</h3>
+        <p class="unique-desc">На основе заранее заполненной анкеты я пишу индивидуальный сценарий особого вечера или целого дня. Подходит, если хотите сделать сюрприз; возобновить чувства; извиниться; сделать предложение руки и сердца; провести необычный день.</p>
+        <p class="unique-price">от 200 € + бюджет</p>
+      </div>
+      <div class="unique-card">
+        <h3 class="unique-title">Видеоклип</h3>
+        <p class="unique-desc">Сценарий, режиссура и монтаж короткого фильма. Подарок имениннику, в котором друзья делятся тёплыми словами; юмористический клип о рабочем коллективе; тизер к предстоящему вечеру из коротких интервью гостей.</p>
+        <p class="unique-price">от 200 €</p>
+      </div>
+      <div class="unique-card">
+        <h3 class="unique-title">Квест</h3>
+        <p class="unique-desc">Концепция и сценарий дня, где участникам нужно выполнить миссию — например, найти сокровище. Включает авторский сценарий и координирование процесса. Подходит для пар, семей или небольших групп.</p>
+        <p class="unique-price">от 600 € + бюджет</p>
+      </div>
+      <div class="unique-card">
+        <h3 class="unique-title">Консультация</h3>
+        <p class="unique-desc">Если хотите создать что-то искреннее, но не знаете как — смело обращайтесь. Вместе найдём ясность и практическое решение для любой идеи.</p>
+        <p class="unique-price">от 50 €</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="wrap" style="text-align:center">
+    <svg width="60" height="20" viewBox="0 0 60 20" fill="none" style="opacity:.28;margin-bottom:2rem" aria-hidden="true">
+      <line x1="0" y1="10" x2="22" y2="10" stroke="#a84f28" stroke-width=".8"/>
+      <rect x="26" y="6" width="8" height="8" transform="rotate(45 30 10)" stroke="#a84f28" stroke-width=".8" fill="none"/>
+      <line x1="38" y1="10" x2="60" y2="10" stroke="#a84f28" stroke-width=".8"/>
+    </svg>
+    <p class="footer-name">Олег Чеклу</p>
+    <p class="footer-sub">[Телефон] · [Email] · [Telegram @...]</p>
+    <button class="footer-links-btn" onclick="document.getElementById('links-modal').classList.add('open')">
+      Все проекты &nbsp;↗
+    </button>
+  </div>
+</footer>
+
+
+<!-- ═══ MODAL: ссылки ═══ -->
+<div class="modal-backdrop" id="links-modal"
+  onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-card">
+    <button class="modal-close" onclick="document.getElementById('links-modal').classList.remove('open')">✕</button>
+
+    <div class="modal-group">
+      <span class="modal-group-label">Проекты</span>
+      <a href="https://www.mafiain.lt" class="modal-link" target="_blank" rel="noopener">
+        mafiain.lt <span>— живые игры мафии</span>
+      </a>
+      <a href="https://www.mafiaonlinegame.com" class="modal-link" target="_blank" rel="noopener">
+        mafiaonlinegame.com <span>— онлайн платформа</span>
+      </a>
+      <a href="https://www.psichodramospraktikas.lt" class="modal-link" target="_blank" rel="noopener">
+        psichodramospraktikas.lt <span>— wellness практики</span>
+      </a>
+    </div>
+
+    <div class="modal-group">
+      <span class="modal-group-label">Instagram</span>
+      <a href="https://instagram.com/svadbalt" class="modal-link" target="_blank" rel="noopener">
+        @svadbalt <span>— церемонии</span>
+      </a>
+      <a href="https://instagram.com/ocheklu" class="modal-link" target="_blank" rel="noopener">
+        @ocheklu <span>— личный профиль</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// Nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+// Fade in
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)} });
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+// Sliders
+document.querySelectorAll('.photo-slider').forEach(slider => {
+  const track  = slider.querySelector('.slider-track');
+  const slides = track.querySelectorAll('.slider-slide');
+  const dotsEl = document.getElementById('dots-' + track.id);
+  const dots   = dotsEl ? dotsEl.querySelectorAll('.slider-dot') : [];
+  let cur = 0;
+  function goTo(n){
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    track.scrollTo({left: cur * track.clientWidth, behavior:'smooth'});
+    dots.forEach((d,i) => d.classList.toggle('active', i === cur));
+  }
+  slider.querySelector('.prev').addEventListener('click', () => goTo(cur - 1));
+  slider.querySelector('.next').addEventListener('click', () => goTo(cur + 1));
+  dots.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
+});
+
+// Close modal on Escape
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') document.getElementById('links-modal').classList.remove('open');
+});
+</script>
+</body>
+</html>
