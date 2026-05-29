@@ -492,6 +492,21 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   /* Footer contacts */
   .footer-sub{display:flex;flex-direction:column;align-items:center;gap:.45rem}
   .footer-sep{display:none}
+  /* Vertical videos stay 9/16 on mobile */
+  .video-box.vertical{aspect-ratio:9/16}
+  /* Hero portrait — reorder and show as small centered circle */
+  .hero-inner{display:flex;flex-direction:column}
+  .hero-kicker{order:1}
+  .hero-ornament{
+    display:block;
+    position:relative;right:auto;top:auto;transform:none;
+    width:130px;height:130px;
+    margin:1.8rem auto;
+    order:2;
+  }
+  .hero-name{order:3}
+  .hero-subtitle{order:4}
+  .stats-row{order:5}
 }
 </style>
 </head>
@@ -523,7 +538,7 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
 
     <p class="hero-kicker">Ведущий мероприятий, мастер церемоний, креативный продюссер · Европа</p>
     <h1 class="hero-name">Олег Чеклу</h1>
-    <p class="hero-subtitle">Создаю живое пространство, где люди раскрываются.</p>
+    <p class="hero-subtitle">Создаю живое пространство, в котором люди раскрываются.</p>
 
     <div class="stats-row">
       <div class="stat">
