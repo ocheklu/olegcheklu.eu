@@ -360,7 +360,7 @@ nav ul a:hover{color:var(--text)}
 .photo-strip-item img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* Online layout: vertical video + strip */
-.online-layout{display:grid;grid-template-columns:280px 370px;gap:1.5rem;align-items:start}
+.online-layout{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:start}
 
 /* ── UNIQUE SERVICES ── */
 .unique-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:3.5rem}
@@ -428,6 +428,20 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
 .fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .fade.visible{opacity:1;transform:none}
 
+/* ── NAV BURGER ── */
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:.5rem;
+  position:relative;z-index:160;
+}
+.nav-burger span{
+  display:block;width:22px;height:1.5px;background:var(--text);
+  transition:transform .25s,opacity .25s;transform-origin:center;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   nav{padding:1rem 1.5rem}
@@ -453,8 +467,31 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
   .photo-strip-item{flex:0 0 78%}
 }
 @media(max-width:600px){
+  /* Grids */
   .layout-three-col{grid-template-columns:1fr}
-  nav ul{display:none}
+  .layout-2x2{grid-template-columns:1fr}
+  /* Sections */
+  .service-section{padding:3.5rem 0}
+  /* Hero kicker */
+  .hero-kicker{font-size:.58rem;letter-spacing:.1em;flex-wrap:wrap}
+  /* Stats */
+  .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem}
+  /* Nav burger */
+  nav{justify-content:flex-end}
+  .nav-burger{display:flex}
+  #nav-list{
+    display:none;
+    position:fixed;inset:0;
+    background:var(--bg);z-index:150;
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.2rem;
+  }
+  #nav-list.open{display:flex;animation:mFadeIn .22s ease}
+  #nav-list a{font-size:1rem;letter-spacing:.14em;color:var(--text)}
+  #nav-list a:hover{color:var(--accent)}
+  /* Footer contacts */
+  .footer-sub{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+  .footer-sep{display:none}
 }
 </style>
 </head>
@@ -462,7 +499,10 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
-  <ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="nav-list">
     <li><a href="#ceremony">Церемония</a></li>
     <li><a href="#bridges">Знакомство гостей</a></li>
     <li><a href="#mafia">Игра Мафия</a></li>
@@ -742,8 +782,8 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
 
       <div class="photo-slider">
         <div class="slider-track" id="slider-online">
-          <div class="slider-slide" style="aspect-ratio:3/4"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
-          <div class="slider-slide" style="aspect-ratio:3/4"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
+          <div class="slider-slide" style="aspect-ratio:16/9"><img src="img/online-1.webp" alt="Онлайн игра 1"></div>
+          <div class="slider-slide" style="aspect-ratio:16/9"><img src="img/online-2.webp" alt="Онлайн игра 2"></div>
         </div>
         <button class="slider-btn prev" data-target="slider-online">&#8592;</button>
         <button class="slider-btn next" data-target="slider-online">&#8594;</button>
@@ -886,9 +926,9 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
     <p class="footer-name">Олег Чеклу</p>
     <p class="footer-sub">
       <a href="tel:+37067168072" style="color:inherit;text-decoration:none">+370 671 68072</a>
-      &nbsp;·&nbsp;
+      <span class="footer-sep">&nbsp;·&nbsp;</span>
       <a href="mailto:olegcheklu@gmail.com" style="color:inherit;text-decoration:none">olegcheklu@gmail.com</a>
-      &nbsp;·&nbsp;
+      <span class="footer-sep">&nbsp;·&nbsp;</span>
       <a href="https://t.me/ocheklu" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Telegram @ocheklu</a>
     </p>
     <button class="footer-links-btn" onclick="document.getElementById('links-modal').classList.add('open')">
@@ -967,6 +1007,24 @@ document.querySelectorAll('.photo-slider').forEach(slider => {
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape') document.getElementById('links-modal').classList.remove('open');
 });
+
+// Burger menu
+const burger  = document.getElementById('nav-burger');
+const navList = document.getElementById('nav-list');
+if(burger){
+  burger.addEventListener('click', () => {
+    const isOpen = navList.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navList.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navList.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
 </script>
 </body>
 </html>
