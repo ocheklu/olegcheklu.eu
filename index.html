@@ -577,10 +577,11 @@ footer{padding:6rem 0;text-align:center;border-top:1px solid var(--line);backgro
     gap:2.2rem;
   }
   #nav-list.open{
-    display:flex;flex-direction:column;
+    display:flex;flex-direction:column!important;flex-wrap:nowrap!important;
     align-items:center;justify-content:center;
     animation:mFadeIn .22s ease;
   }
+  html.nav-open,body.nav-open{overflow:hidden;}
   #nav-list a{font-size:1rem;letter-spacing:.14em;color:var(--text)}
   #nav-list a:hover{color:var(--accent)}
   /* Slider arrows */
@@ -1129,13 +1130,15 @@ if(burger){
   burger.addEventListener('click', () => {
     const isOpen = navList.classList.toggle('open');
     burger.classList.toggle('open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.documentElement.classList.toggle('nav-open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
   });
   navList.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       navList.classList.remove('open');
       burger.classList.remove('open');
-      document.body.style.overflow = '';
+      document.documentElement.classList.remove('nav-open');
+      document.body.classList.remove('nav-open');
     });
   });
 }
